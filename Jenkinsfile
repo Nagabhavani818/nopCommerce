@@ -12,14 +12,8 @@ pipeline {
         }
         stage('restore and build') {
             steps {
-                sh script: 'dotnet restore src/NopCommerce.sln',
-                           'dotnet build -c Release src/NopCommerce.sln'
-            }
-        }
-        stage('Test results') {
-            steps {
-                archiveArtifacts artifacts : '**/src/Presentation/Nop.Web/**'
-                junit testResults : '**/net7.0/Nop.Tests.dll'
+                sh script: '''dotnet restore src/NopCommerce.sln ,
+                           dotnet build -c Release src/NopCommerce.sln'''
             }
         }
     }
