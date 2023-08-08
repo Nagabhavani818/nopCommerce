@@ -3,6 +3,9 @@ pipeline {
     triggers {
         pollSCM('* * * * * ')
     }
+     tools {
+        jdk JDK-17 
+    }
     stages { 
         stage('git') {
             steps {
@@ -12,7 +15,7 @@ pipeline {
         }
         stage('restore and build') {
             steps {
-                sh script: '''dotnet restore src/NopCommerce.sln ,
+                sh:  '''dotnet restore src/NopCommerce.sln ,
                            dotnet build -c Release src/NopCommerce.sln'''
             }
         }
