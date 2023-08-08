@@ -9,8 +9,8 @@ pipeline {
     stages { 
         stage('git') {
             steps {
-                git branch: 'develop',
-                    url: 'https://github.com/Nagabhavani818/nopCommerce.git'
+                git url :  'https://github.com/Nagabhavani818/nopCommerce.git' ,
+                git branch: 'develop'
             }
         }
         stage('restore and build') {
